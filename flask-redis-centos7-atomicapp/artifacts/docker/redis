@@ -1,0 +1,1 @@
+docker run -d --name=redis -v /opt/redis:/redis -p 6379 $redisimage redis-server
