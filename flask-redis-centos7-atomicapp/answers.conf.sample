@@ -1,0 +1,7 @@
+[flask]
+flaskimage = dharmit/flask
+[redis]
+redisimage = dharmit/redis
+[general]
+namespace = default
+provider = docker

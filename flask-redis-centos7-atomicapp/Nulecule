@@ -1,0 +1,25 @@
+---
+specversion: 0.0.2
+id: flask_redis_nulecule
+
+metadata:
+    name: Flask Redis Nulecule App
+    appversion: 0.0.1
+    description: Atomic app for deploying Flask + Redis page visit counter
+graph:
+    - name: redis
+      params: 
+        - name: redisimage
+          description: Redis image
+          default: dharmit/redis_nulecule_app
+      artifacts:
+        docker:
+          - file://artifacts/docker/redis
+    - name: flask
+      params: 
+        - name: flaskimage
+          description: Flask image
+          default: dharmit/flask_nulecule_app
+      artifacts:
+        docker:
+          - file://artifacts/docker/flask
