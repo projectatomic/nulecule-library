@@ -11,7 +11,7 @@ graph:
       params: 
         - name: redisimage
           description: Redis image
-          default: dharmit/redis_nulecule_app
+          default: dharmit/redis
       artifacts:
         docker:
           - file://artifacts/docker/redis
@@ -19,7 +19,7 @@ graph:
       params: 
         - name: flaskimage
           description: Flask image
-          default: dharmit/flask_nulecule_app
+          default: dharmit/flask
       artifacts:
         docker:
           - file://artifacts/docker/flask
