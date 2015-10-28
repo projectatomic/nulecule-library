@@ -15,6 +15,9 @@ graph:
       artifacts:
         docker:
           - file://artifacts/docker/redis
+        kubernetes:
+          - file://artifacts/kubernetes/00-service-redis.yaml
+          - file://artifacts/kubernetes/01-pod-redis.yaml
     - name: flask
       params: 
         - name: flaskimage
@@ -23,3 +26,6 @@ graph:
       artifacts:
         docker:
           - file://artifacts/docker/flask
+        kubernetes:
+          - file://artifacts/kubernetes/02-service-flask.yaml
+          - file://artifacts/kubernetes/03-pod-flask.yaml

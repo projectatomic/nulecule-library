@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    name: redis
+    app: redis
+spec:
+  containers:
+  - name: redis
+    image: dharmit/redis
+    command:
+    - "redis-server"
+    ports:
+    - containerPort: 6379
+      hostPort: 6379
+    volumeMounts:
+    - mountPath: /redis
+      name: redis-store
+  volumes:
+  - name: redis-store
+    hostPath:
+      path: /opt/redis

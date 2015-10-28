@@ -1,28 +1,34 @@
-This is an atomic application based on Nulecule specification. Docker is the
-only supported provider at the moment but work for Kubernetes provider is under
-active development. A workstation needs to have atomic command to be able to
-run this app.
+###Overview
 
-This is a 2-tier application based on [flask](flask.pocoo.org) and
-[redis](redis.io). Every time you access the web page, a message is displayed
-which indicates the number of times the web page was accessed. And this counter
-is incremented upon each access.
+This is an atomic application based on Nulecule specification. This is a 2-tier
+application based on [flask](flask.pocoo.org) and [redis](redis.io). Every time
+you access the web page, a message is displayed which indicates the number of
+times the web page was accessed. And this counter is incremented upon each
+access.
 
-This repo ships with an `answers.conf.sample` file which needs to be renamed as
-`answers.conf`. This is because `atomic run` uses Kubernetes as default
-provider and in absence of `answers.conf` file, `atomic run` will generate and
-use the resulting `answers.conf`.
+###Prerequisites
 
-Thus, to run this atomic app, one needs to follow below steps:
+The redis container has a volume mounted from the host system. At the moment we
+are mounting `/opt/redis` on `/redis` in the redis container. This is mainly
+for the sake of persistence, in that, even if a redis container/pod is killed
+and started afresh, the count is stored. For this to work, we need to apply
+below SELinux context on `/opt/redis` on the host:
 
-~~~
-$ mv answers.conf.sample answers.conf
-$ atomic run dharmit/flask_redis
-~~~
+    $ sudo chcon -Rt svirt_sandbox_file_t /opt/redis
 
-To check the app, open up port 5000 in the web browser or simply use below
-`curl` command:
+This app is based on [CentOS 7](https://hub.docker.com/_/centos/) image.
 
-~~~
-curl localhost:5000
-~~~
+###Usage
+
+To run this app, workstation needs to have atomic command. Use below command to
+start the app:
+
+    $ atomic run dharmit/flask_redis
+
+To check the app, open [http://localhost:5000](http://localhost:5000) in the
+web browser.
+
+###Known Issues/ToDo
+
+Things like port 5000 and volume to be mounted on redis container are hardcoded
+at the moment. This could be changed with minor tweaks.
