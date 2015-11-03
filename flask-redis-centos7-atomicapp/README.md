@@ -66,5 +66,6 @@ answerfile before running the application.
 
 ###Check the app
 
-To check the app, open [http://localhost:5000](http://localhost:5000) in the
-web browser.
+To check the app, open [http://localhost:31000](http://localhost:31000) in the
+web browser. If you have chosen some other value for the environment variable
+`NODE_PORT`, use that port instead of 31000.
