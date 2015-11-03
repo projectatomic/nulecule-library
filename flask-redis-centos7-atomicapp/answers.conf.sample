@@ -1,7 +1,9 @@
 [flask]
-flaskimage = dharmit/flask
+flaskImage = dharmit/flask:latest
+NODE_PORT = 31000
 [redis]
-redisimage = dharmit/redis
+redisImage = dharmit/redis:latest
+redisPath = /opt/redis
 [general]
 namespace = default
-provider = docker
+provider = kubernetes

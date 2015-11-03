@@ -1,1 +1,1 @@
-docker run -d --name=redis -v /opt/redis:/redis -p 6379 $redisimage redis-server
+docker run -d --name=redis -v $redisPath:/redis -p 6379 $redisImage redis-server

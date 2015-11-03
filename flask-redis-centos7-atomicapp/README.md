@@ -1,7 +1,7 @@
 ###Overview
 
-This is an atomic application based on Nulecule specification. This is a 2-tier
-application based on [flask](flask.pocoo.org) and [redis](redis.io). Every time
+This is an atomicapp based on Nulecule specification. This is a 2-tier
+application based on [Flask](flask.pocoo.org) and [redis](redis.io). Every time
 you access the web page, a message is displayed which indicates the number of
 times the web page was accessed. And this counter is incremented upon each
 access.
@@ -20,15 +20,51 @@ This app is based on [CentOS 7](https://hub.docker.com/_/centos/) image.
 
 ###Usage
 
-To run this app, workstation needs to have atomic command. Use below command to
-start the app:
+####Option 1 - Interactive
 
-    $ atomic run dharmit/flask_redis
+Run the image with below command. It'll use `kubernetes` as the default
+provider. It will prompt for the parameters in Nulecule file that do not have
+default values.
+
+    $ [sudo] atomic run dharmit/flask_redis
+
+####Option 2 - Unattended
+
+Create a new directory and in that, create a file called `answers.conf` with
+below contents:
+
+    [flask]
+    flaskImage = dharmit/flask:latest
+    NODE_PORT = 31000
+    [redis]
+    redisImage = dharmit/redis:latest
+    redisPath = /opt/redis
+    [general]
+    namespace = default
+    provider = kubernetes
+
+Now, from the directory containting `answers.conf` file, run the application:
+
+    $ [sudo] atomic run dharmit/flask_redis
+
+####Option 3 - Install and Run
+
+You can download the application, review the `Nulecule` file and edit
+answerfile before running the application.
+
+1. Download the app using `atomic install`:
+
+        [sudo] atomic install dharmit/flask_redis
+
+2. Rename `answers.conf.sample`:
+
+        mv answers.conf.sample answers.conf
+
+3. Edit `answers.conf`, review the files if desired and run:
+
+       [sudo] atomic run dharmit/flask_redis
+
+###Check the app
 
 To check the app, open [http://localhost:5000](http://localhost:5000) in the
 web browser.
-
-###Known Issues/ToDo
-
-Things like port 5000 and volume to be mounted on redis container are hardcoded
-at the moment. This could be changed with minor tweaks.
