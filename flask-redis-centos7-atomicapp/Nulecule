@@ -8,7 +8,7 @@ metadata:
     description: Atomic app of a simple light weight Flask and Redis app. This app counts the number of page visits and stores the counter in Redis store
 graph:
     - name: redis
-      params: 
+      params:
         - name: redisImage
           description: Redis image
           default: dharmit/redis:latest
@@ -19,10 +19,10 @@ graph:
         docker:
           - file://artifacts/docker/redis
         kubernetes:
-          - file://artifacts/kubernetes/service-redis.yaml
-          - file://artifacts/kubernetes/rc-redis.yaml
+          - file://artifacts/kubernetes/redis-service.yaml
+          - file://artifacts/kubernetes/redis-rc.yaml
     - name: flask
-      params: 
+      params:
         - name: flaskImage
           description: Flask image
           default: dharmit/flask:latest
@@ -33,5 +33,5 @@ graph:
         docker:
           - file://artifacts/docker/flask
         kubernetes:
-          - file://artifacts/kubernetes/service-flask.yaml
-          - file://artifacts/kubernetes/rc-flask.yaml
+          - file://artifacts/kubernetes/flask-service.yaml
+          - file://artifacts/kubernetes/flask-rc.yaml
