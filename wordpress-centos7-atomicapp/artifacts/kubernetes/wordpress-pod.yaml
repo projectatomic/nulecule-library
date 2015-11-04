@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress
+  labels:
+    name: wordpress-frontend
+
+spec:
+  containers:
+    - name: wordpress
+      image: $image
+      ports:
+        - containerPort: 80
+      env:
+        - name: WORDPRESS_DB_USER
+          value: $db_user
+        - name: WORDPRESS_DB_PASSWORD
+          value: $db_pass
+        - name: WORDPRESS_DB_NAME
+          value: $db_name
+        - name: WORDPRESS_DB_HOST
+          value: $db_host

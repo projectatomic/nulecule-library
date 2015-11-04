@@ -1,0 +1,38 @@
+---
+specversion: 0.0.2
+id: wordpress-atomicapp
+
+metadata:
+  name: Wordpress App
+  appversion: 2.0.0
+  description: Simple Wordpress atomic app. Uses remote mysql atomic app.
+graph:
+  - name: aggregated-mariadb-atomicapp
+    source: docker://projectatomic/mariadb-centos7-atomicapp
+  - name: wordpress
+    params:
+      - name: image
+        description:  wordpress image
+        default: wordpress
+      - name: db_user
+        description: username for database
+      - name: db_pass
+        description:  password for db_user
+      - name: db_name
+        description: database name
+      - name: db_host
+        description: database host
+        default: mariadb:3306
+      - name: port
+        description: port for docker port mapping (used only with docker provider)
+        default: 8080
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/wordpress-pod.yaml
+        - file://artifacts/kubernetes/wordpress-service.yaml
+      openshift:
+        - file://artifacts/openshift/volume.yaml
+        - file://artifacts/openshift/service.yaml
+        - file://artifacts/openshift/pod.yaml
+      docker:
+        - file://artifacts/docker/wordpress-run
