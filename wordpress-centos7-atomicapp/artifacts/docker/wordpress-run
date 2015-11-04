@@ -1,0 +1,1 @@
+docker run -d --name wordpress-atomicapp --link mariadb-atomicapp-app:mysql  -e WORDPRESS_DB_USER=$db_user -e WORDPRESS_DB_PASSWORD=$db_pass -e WORDPRESS_DB_NAME=$db_name wordpress

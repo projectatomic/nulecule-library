@@ -1,0 +1,23 @@
+apiVersion: v1
+id: mariadb
+kind: Pod
+spec:
+  containers:
+    - resources:
+        limits:
+          cpu: 100m
+      name: mariadb
+      image: $image
+      env:
+        - name: NAME
+          value: $db_name
+        - name: USER
+          value: $db_user
+        - name: PASS
+          value: $db_pass
+      ports:
+        - containerPort: 3306
+metadata:
+  name: mariadb
+  labels:
+    name: mariadb
