@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis
+  labels:
+    name: redis
+    app: redis
+spec:
+    replicas: 1
+    selector:
+      app: redis
+    template:
+      metadata:
+        labels:
+          app: redis
+      spec:
+        containers:
+        - name: redis
+          image: $redisImage
+          command:
+          - "redis-server"
+          ports:
+          - name: redisport
+            containerPort: 6379
+          volumeMounts:
+          - mountPath: /redis
+            name: redis-store
+        volumes:
+        - name: redis-store
+          hostPath:
+            path: $redisPath
