@@ -1,0 +1,23 @@
+---
+specversion: 0.0.2
+id: gocounter
+
+metadata:
+    name: gocounter
+    appversion: 0.0.1
+    description: Atomicapp of a golang based app that prints number of hits in past one minute
+graph:
+    - name: gocounter
+      params:
+        - name: goImage
+          description: Go image
+          default: dharmit/gocounter:master # Default tag given by Docker Hub on the basis of name of branch
+        - name: NODE_PORT 
+          description: Port on the host system to be used
+          default: 32000
+      artifacts:
+        docker:
+          - file://artifacts/docker/gocounter
+        kubernetes:
+          - file://artifacts/kubernetes/gocounter-service.yaml
+          - file://artifacts/kubernetes/gocounter-rc.yaml
