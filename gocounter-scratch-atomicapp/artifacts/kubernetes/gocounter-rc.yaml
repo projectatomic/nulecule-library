@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController 
+metadata:
+  name: gocounter
+  labels:
+    name: gocounter
+    app: gocounter
+spec:
+  replicas: 1
+  selector:
+    app: gocounter
+  template:
+    metadata:
+      labels:
+        app: gocounter
+    spec:
+      containers:
+      - name: gocounter
+        image: $goImage
+        ports:
+        - name: gocounterport
+          containerPort: 80
