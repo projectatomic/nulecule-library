@@ -1,0 +1,4 @@
+docker run -d \
+    --name mongodb-atomicapp-app \
+    -p 27017:27017 \
+    $image

@@ -1,0 +1,24 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "id": "mongodb",
+    "metadata": {
+        "name": "mongodb",
+        "labels": {
+            "name": "mongodb"
+        }
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "mongodb",
+                "image": "kolab/mongodb",
+                "ports": [
+                    {
+                        "containerPort": 27017
+                    }
+                ]
+            }
+        ]
+    }
+}

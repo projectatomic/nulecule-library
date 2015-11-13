@@ -1,0 +1,37 @@
+{
+    "specversion": "0.0.2",
+    "id": "mongodb-atomicapp",
+    "metadata": {
+        "name": "MongoDB Server",
+        "appversion": "1.0.0",
+        "description": "This is MongoDB"
+    },
+    "graph": [
+        {
+            "name": "mongodb-atomicapp",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "Image to use",
+                    "default": "kolab/mongodb"
+                }
+            ],
+            "artifacts": {
+                "docker": [
+                    "file://artifacts/docker/run-mongodb-atomicapp-pod"
+                ],
+                "kubernetes": [
+                    "file://artifacts/kubernetes/pod.json",
+                    "file://artifacts/kubernetes/service.json"
+                ],
+                "openshift": [
+                    {
+                        "inherit": [
+                            "kubernetes"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
