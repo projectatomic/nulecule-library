@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "mongodb_quiet",
-                    "description": "Run MongoDB quietly."
+                    "description": "Run MongoDB quietly.",
                     "default": true
                 },
                 {
