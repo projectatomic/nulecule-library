@@ -12,7 +12,7 @@
         "containers": [
             {
                 "name": "mongodb",
-                "image": "kolab/mongodb",
+                "image": $image",
                 "ports": [
                     {
                         "containerPort": 27017

@@ -1,4 +1,11 @@
 docker run -d \
     --name mongodb-atomicapp-app \
+    -e MONGODB_ADMIN_PASSWORD=$mongodb_admin_password \
+    -e MONGODB_DATABASE=$mongodb_database \
+    -e MONGODB_NOPREALLOC=$mongodb_noprealloc \
+    -e MONGODB_PASSWORD=$mongodb_password \
+    -e MONGODB_QUIET=$mongodb_quiet \
+    -e MONGODB_SMALLFILES=$mongodb_smallfiles \
+    -e MONGODB_USERNAME=$mongodb_username \
     -p 27017:27017 \
     $image
