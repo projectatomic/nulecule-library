@@ -12,7 +12,7 @@
         "containers": [
             {
                 "name": "mongodb",
-                "image": $image",
+                "image": "$image",
                 "ports": [
                     {
                         "containerPort": 27017
