@@ -1,0 +1,68 @@
+{
+    "specversion": "0.0.2",
+    "id": "mongodb-atomicapp",
+    "metadata": {
+        "name": "MongoDB Server",
+        "appversion": "1.0.0",
+        "description": "This is MongoDB"
+    },
+    "graph": [
+        {
+            "name": "mongodb-atomicapp",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "Image to use",
+                    "default": "centos/mongodb-26-centos7"
+                },
+                {
+                    "name": "mongodb_admin_password",
+                    "description": "MongoDB Administrator password"
+                },
+                {
+                    "name": "mongodb_database",
+                    "description": "MongoDB Database name"
+                },
+                {
+                    "name": "mongodb_noprealloc",
+                    "description": "Disable file preallocation (allocate sparse or thin and expand as necessary)",
+                    "default": true
+                },
+                {
+                    "name": "mongodb_password",
+                    "description": "Password for the $mongodb_user account"
+                },
+                {
+                    "name": "mongodb_quiet",
+                    "description": "Run MongoDB quietly.",
+                    "default": true
+                },
+                {
+                    "name": "mongodb_smallfiles",
+                    "description": "Configure MongoDB to use a smaller default data file size",
+                    "default": true
+                },
+                {
+                    "name": "mongodb_username",
+                    "description": "User name for MongoDB account to be created"
+                }
+            ],
+            "artifacts": {
+                "docker": [
+                    "file://artifacts/docker/run-mongodb-atomicapp-pod"
+                ],
+                "kubernetes": [
+                    "file://artifacts/kubernetes/pod.json",
+                    "file://artifacts/kubernetes/service.json"
+                ],
+                "openshift": [
+                    {
+                        "inherit": [
+                            "kubernetes"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
