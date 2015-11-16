@@ -17,6 +17,36 @@
                     {
                         "containerPort": 27017
                     }
+                ],
+                "env": [
+                    {
+                        "name": "MONGODB_ADMIN_PASSWORD",
+                        "value": "$mongodb_admin_password"
+                    },
+                    {
+                        "name": "MONGODB_DATABASE",
+                        "value": "$mongodb_database"
+                    },
+                    {
+                        "name": "MONGODB_NOPREALLOC",
+                        "value": "$mongodb_noprealloc"
+                    },
+                    {
+                        "name": "MONGODB_PASSWORD",
+                        "value": "$mongodb_password"
+                    },
+                    {
+                        "name": "MONGODB_QUIET",
+                        "value": "$mongodb_quiet"
+                    },
+                    {
+                        "name": "MONGODB_SMALLFILES",
+                        "value": "$mongodb_smallfiles"
+                    },
+                    {
+                        "name": "MONGODB_USER",
+                        "value": "$mongodb_username"
+                    }
                 ]
             }
         ]
