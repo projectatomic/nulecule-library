@@ -68,7 +68,7 @@ We have configured the app on ADB port 30000 (see answer.conf). You can access
 the app using the IP of ADB box at port 30000 or by forwarding the port 30000 of ADB box to
 host machine port.
 
-To test out if app is running and intialized properly (run following inside ADB)
+To test out if app is running and initialized properly (run following inside ADB)
 ```
 $ kubectl get pods
 NAME               READY     STATUS    RESTARTS   AGE
