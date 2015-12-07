@@ -1,6 +1,6 @@
 FROM projectatomic/atomicapp:0.2.3
 
-MAINTAINER Dharmit Shah <dshah@redhat.com>
+MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
 LABEL io.projectatomic.nulecule.providers="docker" \
       io.projectatomic.nulecule.specversion="0.0.2"
