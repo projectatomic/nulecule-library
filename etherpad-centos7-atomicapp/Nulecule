@@ -1,0 +1,38 @@
+--- 
+specversion: "0.0.2"
+
+id: etherpad-app
+metadata: 
+  name: etherpad-app
+  appversion: 0.0.1
+  description: Atomic app for deploying basic etherpad
+
+graph: 
+  - name: mariadb-centos7-atomicapp
+    source: docker://projectatomic/mariadb-centos7-atomicapp
+  - name: etherpad-app
+    params: 
+      - name: image
+        description: The container image for etherpad
+        default: centos/etherpad
+      - name: hostport
+        description: The host TCP port as the external endpoint
+        default: 9001
+      - name: db_user
+        description: Database User
+      - name: db_pass
+        description: Database Password
+      - name: db_name
+        description: Database Name
+      - name: db_host
+        description: Database service name
+        default: mariadb
+    artifacts:
+      docker:
+        - file://artifacts/docker/etherpad-centos7-atomicapp-run
+      kubernetes:
+        - file://artifacts/kubernetes/etherpad-rc.yaml
+        - file://artifacts/kubernetes/etherpad-svc.yaml
+      openshift:
+        - file://artifacts/openshift/etherpad-rc.yaml
+        - file://artifacts/openshift/etherpad-svc.yaml
