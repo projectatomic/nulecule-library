@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: etherpad
+  labels:
+    name: etherpad
+spec:
+  replicas: 1
+  selector:
+    name: etherpad
+  template:
+    metadata:
+      labels:
+        name: etherpad
+    spec:
+      containers:
+        - name: etherpad
+          image: $image
+          ports:
+            - name: etherpad-server
+              containerPort: $hostport
+          env:
+            - name: DB_HOST
+              value: $db_host
+            - name: DB_DBID
+              value: $db_name
+            - name: DB_PASS
+              value: $db_pass
+            - name: DB_PORT
+              value: '3306'
+            - name: DB_USER
+              value: $db_user
