@@ -19,6 +19,9 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-master-controller.json
         - file://artifacts/kubernetes/redis-master-service.json
+      openshift:
+        - inherit:
+          - kubernetes
       docker:
         - file://artifacts/docker/redis-master_run
   - name: redisslave-app
@@ -36,6 +39,9 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-slave-controller.json
         - file://artifacts/kubernetes/redis-slave-service.json
+      openshift:
+        - inherit:
+          - kubernetes
       docker:
         - file://artifacts/docker/redis-slave_run
 
