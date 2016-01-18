@@ -11,7 +11,7 @@ graph:
     params:
       - name: image
         description: The redis master part
-        default: jasonbrooks/redis 
+        default: centos/redis
       - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
@@ -19,13 +19,16 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-master-controller.json
         - file://artifacts/kubernetes/redis-master-service.json
+      openshift:
+        - inherit:
+          - kubernetes
       docker:
         - file://artifacts/docker/redis-master_run
   - name: redisslave-app
     params:
       - name: image
         description: The redis slave part
-        default: jasonbrooks/redis
+        default: centos/redis
       - name: master_hostport
         description: The host TCP port of the redis master
         default: 6379
@@ -36,6 +39,9 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/redis-slave-controller.json
         - file://artifacts/kubernetes/redis-slave-service.json
+      openshift:
+        - inherit:
+          - kubernetes
       docker:
         - file://artifacts/docker/redis-slave_run
 
