@@ -1,5 +1,4 @@
 apiVersion: v1
-id: mariadb
 kind: Pod
 spec:
   containers:

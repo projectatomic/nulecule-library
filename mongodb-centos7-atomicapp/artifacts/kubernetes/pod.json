@@ -1,7 +1,6 @@
 {
     "kind": "Pod",
     "apiVersion": "v1",
-    "id": "mongodb",
     "metadata": {
         "name": "mongodb",
         "labels": {
