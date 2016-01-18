@@ -16,5 +16,8 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/guestbook-controller.json
         - file://artifacts/kubernetes/guestbook-service.json
+      openshift:
+        - inherit:
+          - kubernetes
   - name: redis-centos7-atomicapp
     source: docker://projectatomic/redis-centos7-atomicapp

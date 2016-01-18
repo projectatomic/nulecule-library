@@ -11,7 +11,7 @@
       "ports": [
          {
            "port":3000,
-           "targetPort":"http-server"
+           "targetPort":3000
          }
       ],
       "selector":{
