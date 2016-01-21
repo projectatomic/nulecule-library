@@ -1,0 +1,25 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "labels": {
+            "app": "apache-centos7-atomicapp"
+        },
+        "name": "apache-centos7-atomicapp"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "$image",
+                "name": "apache-centos7-atomicapp",
+                "ports": [
+                    {
+                        "containerPort": 80,
+                        "hostPort": $hostport,
+                        "protocol": "TCP"
+                    }
+                ]
+            }
+        ]
+    }
+}
