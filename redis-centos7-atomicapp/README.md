@@ -21,10 +21,13 @@ Note: This option is not interactive because all params in the Nulecule file hav
         [general]
         namespace = default
         provider = kubernetes
+        
         [redismaster-app]
         hostport = 16379
+
         [redisslave-app]
         master_hostport = 16379
+        instances = 2
 
 1. Run the application from the current working directory
 
@@ -32,21 +35,25 @@ Note: This option is not interactive because all params in the Nulecule file hav
 
 1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on base docker.
 
-## Option 3: Install and Run
+## Option 3: Fetch and Run
 
-You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
+You may want to download the application, review the configuration and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
 
-1. Download the application files using `atomic install`
+1. Download the application files
 
-        $ [sudo] atomic install projectatomic/redis-centos7-atomicapp
+        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp --mode fetch
 
-1. Rename `answers.conf.sample`
+    By default application is downloaded to `/var/lib/atomicapp/projectatomic-redis-centos7-atomicapp-<randomid>`.
+    You can change where application will be downloaded with `--destination` parameter.
+
+
+2. Go to application directory and create `answers.conf` file from sample
 
         mv answers.conf.sample answers.conf
 
-1. Edit `answers.conf`, review files if desired and then run
+3. Edit `answers.conf`, review files if desired and then run
 
-        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp
+        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp /var/lib/atomicapp/projectatomic-redis-centos7-atomicapp-<randomid>
 
 ## Test
 Any of these approaches should create a kubernetes service or a pair of running docker containers. 
@@ -57,7 +64,7 @@ With a kubernetes service, once its pods are in the "Running" state, you can use
 $ kubectl get service redis-master
 NAME           LABELS                   SELECTOR                 IP              PORT(S)
 redis-master   name=redis,role=master   name=redis,role=master   <IP Address>    <port>/TCP
-$ docker run --rm -it jasonbrooks/redis redis-cli -h <IP Address> -p <port>
+$ docker run --rm -it centos/redis redis-cli -h <IP Address> -p <port>
 <IP Address>:<port>> get key
 (nil)
 <IP Address>:<port>> set key value

@@ -35,6 +35,9 @@ graph:
       - name: hostport
         description: The host TCP port as the external endpoint
         default: 6379
+      - name: instances
+        descriptoin: Number of slave instances
+        default: 1
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/redis-slave-controller.json
