@@ -29,7 +29,7 @@
                   "command":[
                      "sh",
                      "-c",
-                     "redis-server /etc/redis.conf --slaveof redis-master $master_hostport"
+                     "redis-server /etc/redis.conf --bind 0.0.0.0 --slaveof redis-master $master_hostport"
                   ],
                   "ports":[
                      {
