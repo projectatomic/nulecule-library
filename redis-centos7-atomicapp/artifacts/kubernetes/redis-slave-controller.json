@@ -9,7 +9,7 @@
       }
    },
    "spec":{
-      "replicas":2,
+      "replicas":$instances,
       "selector":{
          "app":"redis",
          "role":"slave"
