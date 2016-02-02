@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.3.0
+FROM projectatomic/atomicapp:0.4.1
 
 MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
