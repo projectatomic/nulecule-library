@@ -64,7 +64,7 @@ With a kubernetes service, once its pods are in the "Running" state, you can use
 $ kubectl get service redis-master
 NAME           LABELS                   SELECTOR                 IP              PORT(S)
 redis-master   name=redis,role=master   name=redis,role=master   <IP Address>    <port>/TCP
-$ docker run --rm -it centos/redis redis-cli -h <IP Address> -p <port>
+$ docker run --rm -it --entrypoint=redis-cli centos/redis -h <IP Address> -p <port>
 <IP Address>:<port>> get key
 (nil)
 <IP Address>:<port>> set key value

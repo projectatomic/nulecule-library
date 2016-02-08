@@ -1,2 +1,2 @@
-docker run -d --name redis-slave -p ::$hostport --link redis-master:redis-master $image /etc/redis.conf --slaveof redis-master $hostport
+docker run -d --name redis-slave -p ::$hostport --link redis-master:redis-master $image /etc/redis.conf --slaveof redis-master $hostport --bind 0.0.0.0
 
