@@ -38,9 +38,9 @@ Note: This option is not interactive because all params in the Nulecule file hav
 
 You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
 
-1. Download the application files using `atomic install`
+1. Download the application files using `atomic run IMAGE --mode fetch`
 
-        [sudo] atomic install projectatomic/helloapache
+        [sudo] atomic run projectatomic/helloapache --mode fetch
 
 1. Rename `answers.conf.sample`
 
