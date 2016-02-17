@@ -1,6 +1,6 @@
 # apache-centos7-atomicapp
 
-This is an atomic application based on the nulecule specification. Kubernetes and native docker are currently the only supported providers. You'll need to run this from a workstation that has the atomic command.  If you wish to use the kubernetes provider, you will also need a kubectl client that can connect to a kubernetes master.
+This is an atomic application based on the nulecule specification. Kubernetes, native docker and Mesos-Marathon are currently supported providers. You'll need to run this from a workstation that has the atomic command.  If you wish to use the kubernetes provider, you will also need a kubectl client that can connect to a kubernetes master.
 
 It's a single container application based on the centos/httpd image, but you can use your own.
 
