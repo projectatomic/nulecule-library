@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.4.1
+FROM projectatomic/atomicapp:0.4.2
 
 MAINTAINER Jeroen van Meeuwen <vanmeeuwen@kolabsys.com>
 
