@@ -12,7 +12,7 @@ spec:
       nodePort: 0
   selector:
     name: mariadb
-  portalIP: None
+  clusterIP: None
   type: ClusterIP
   sessionAffinity: None
 status:
