@@ -7,7 +7,7 @@ metadata:
   appversion: 2.0.0
   description: Simple Wordpress atomic app. Uses remote mysql atomic app.
 graph:
-  - name: aggregated-mariadb-atomicapp
+  - name: mariadb-centos7-atomicapp
     source: docker://projectatomic/mariadb-centos7-atomicapp
   - name: wordpress
     params:
