@@ -36,7 +36,7 @@ atomic run projectatomic/skydns-atomicapp
 
 Download the application files:
 ```
-atomic install projectatomic/skydns-atomicapp
+atomic run projectatomic/skydns-atomicapp --mode fetch
 ```
 
 Create `answers.conf`

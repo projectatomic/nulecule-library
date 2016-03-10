@@ -52,9 +52,9 @@ Now, from the directory containting `answers.conf` file, run the application:
 You can download the application, review the `Nulecule` file and edit
 answerfile before running the application.
 
-1. Download the app using `atomic install`:
+1. Download the app using `atomic run IMAGE --mode fetch`:
 
-        [sudo] atomic install dharmit/flask_redis
+        [sudo] atomic run dharmit/flask_redis --mode fetch
 
 2. Rename `answers.conf.sample`:
 

@@ -32,15 +32,15 @@ Run the image. It will automatically use kubernetes as the orchestration provide
 
 You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
 
-1. Download the application files using `atomic install`
+1. Download the application files using `atomic run IMAGE --mode fetch`
 
-        [sudo] atomic install projectatomic/mariadb-fedora-atomicapp
+        [sudo] atomic run projectatomic/mariadb-fedora-atomicapp --mode fetch
 
-1. Rename `answers.conf.sample`
+2. Rename `answers.conf.sample`
 
         mv answers.conf.sample answers.conf
 
-1. Edit `answers.conf`, review files if desired and then run
+3. Edit `answers.conf`, review files if desired and then run
 
         $ [sudo] atomic run projectatomic/mariadb-fedora-atomicapp
 

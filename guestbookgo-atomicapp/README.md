@@ -16,7 +16,7 @@ Install and Run:
 
 
 ```
-# atomic install $USER/guestbookgo-atomicapp
+# atomic run $USER/guestbookgo-atomicapp --mode fetch
 # atomic run $USER/guestbookgo-atomicapp
 ```
 
