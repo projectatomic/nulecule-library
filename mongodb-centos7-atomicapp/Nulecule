@@ -43,7 +43,7 @@
                     "default": true
                 },
                 {
-                    "name": "mongodb_username",
+                    "name": "mongodb_user",
                     "description": "User name for MongoDB account to be created"
                 }
             ],

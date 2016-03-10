@@ -44,7 +44,7 @@
                     },
                     {
                         "name": "MONGODB_USER",
-                        "value": "$mongodb_username"
+                        "value": "$mongodb_user"
                     }
                 ]
             }

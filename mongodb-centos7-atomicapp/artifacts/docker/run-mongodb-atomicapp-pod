@@ -6,6 +6,6 @@ docker run -d \
     -e MONGODB_PASSWORD=$mongodb_password \
     -e MONGODB_QUIET=$mongodb_quiet \
     -e MONGODB_SMALLFILES=$mongodb_smallfiles \
-    -e MONGODB_USERNAME=$mongodb_username \
+    -e MONGODB_USER=$mongodb_user \
     -p 27017:27017 \
     $image
