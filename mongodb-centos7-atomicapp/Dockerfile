@@ -1,6 +1,9 @@
+# Original source by: Jeroen van Meeuwen <vanmeeuwen@kolabsys.com>
+# https://github.com/kanarip/kolab-atomicapp
+
 FROM projectatomic/atomicapp:0.4.3
 
-MAINTAINER Jeroen van Meeuwen <vanmeeuwen@kolabsys.com>
+MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
 LABEL io.projectatomic.nulecule.specversion="0.0.2" \
       io.projectatomic.nulecule.providers="kubernetes,docker,openshift"
