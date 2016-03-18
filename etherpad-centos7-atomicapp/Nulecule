@@ -7,6 +7,10 @@ metadata:
   appversion: 0.0.1
   description: Atomic app for deploying basic etherpad
 
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph: 
   - name: mariadb-centos7-atomicapp
     source: docker://projectatomic/mariadb-centos7-atomicapp

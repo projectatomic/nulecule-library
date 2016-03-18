@@ -6,6 +6,10 @@ metadata:
   name: PostgreSQL Atomic App
   appversion: 1.0.0
   description: This is PostgreSQL
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: postgresql-atomicapp
     params:

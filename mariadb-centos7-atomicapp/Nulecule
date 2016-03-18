@@ -6,6 +6,10 @@ metadata:
   name: MySQL Atomic App
   appversion: 1.0.0
   description: This is MySQL
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: mariadb-atomicapp
     params:

@@ -6,6 +6,10 @@ metadata:
     name: Flask Redis Nulecule App
     appversion: 0.0.1
     description: Atomic app of a simple light weight Flask and Redis app. This app counts the number of page visits and stores the counter in Redis store
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
     - name: redis
       params:
