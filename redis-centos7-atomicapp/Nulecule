@@ -6,6 +6,10 @@ metadata:
   name: Redis App
   appversion: 0.0.1
   description: Redis Atomic App
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: redismaster-app
     params:

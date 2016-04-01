@@ -7,6 +7,10 @@ metadata:
   description: >
     This is a nulecule that will get you the container components you need
     to dev on nulecule apps
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: skydns
     params:

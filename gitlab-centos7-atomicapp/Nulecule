@@ -6,6 +6,10 @@ metadata:
   name: Gitlab App
   appversion: 1.2.0
   description: Gitlab.
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: redis
     params:

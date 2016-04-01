@@ -6,6 +6,10 @@ metadata:
   name: Wordpress App
   appversion: 2.0.0
   description: Simple Wordpress atomic app. Uses remote mysql atomic app.
+params:
+    - name: provider
+      description: The specified default provider.
+      default: kubernetes
 graph:
   - name: mariadb-centos7-atomicapp
     source: docker://projectatomic/mariadb-centos7-atomicapp
