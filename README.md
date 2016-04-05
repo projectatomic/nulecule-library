@@ -1,6 +1,6 @@
 # Nulecule library
 
-This library contains a set of working examples of composite container applications. The applications are specified using the [Nulecule](https://github.com/projectatomic/nulecule) Specification. This specification allows for reusable components and defines a full multi-container application. You may use the applications for reference or, in some cases, deployment.
+This library contains a set of working examples of composite container applications. The applications are specified using the [Nulecule Specification](https://github.com/projectatomic/nulecule). This specification allows for reusable components and defines a full multi-container application. You may use the applications for reference or, in some cases, deployment.
 
 These examples are all intended to be used with [atomicapp](https://github.com/projectatomic/atomicapp). There is a thorough [getting started guide](https://github.com/projectatomic/atomicapp/blob/master/docs/start_guide.md) available.
 
@@ -8,9 +8,9 @@ These examples are all intended to be used with [atomicapp](https://github.com/p
 
 __Files:__
 
-Please only include the `/artifact` directory and the Nulecule, Dockerfile and README.md files in your nulecule.
+Please only include the `/artifact` directory and the Nulecule, Dockerfile and README.md files in your application.
 
-__ex. projectatomic/helloapache:__
+__For example [projectatomic/helloapache](https://github.com/projectatomic/nulecule-library/tree/master/helloapache), only includes the following files:__
 
 ```sh
 .
@@ -24,7 +24,7 @@ __ex. projectatomic/helloapache:__
 └── README.md
 ```
 
-README.md description:
+__The README.md file should contain the following three sections:__
 
   1. Description: What the application does
   2. Deployment: How to deploy the application using the `atomic` or `atomicapp` CLIs
