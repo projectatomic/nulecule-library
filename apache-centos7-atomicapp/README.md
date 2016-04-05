@@ -1,73 +1,70 @@
-# apache-centos7-atomicapp
+# Apache CentOS 7 Atomic App
 
-This is an atomic application based on the nulecule specification. Kubernetes, native docker and Mesos-Marathon are currently supported providers. You'll need to run this from a workstation that has the atomic command.  If you wish to use the kubernetes provider, you will also need a kubectl client that can connect to a kubernetes master.
+### Description
 
-It's a single container application based on the centos/httpd image, but you can use your own.
+A centos/apache container similar to the "helloapache" example.
 
-## Option 1: Non-interactive defaults
+### Deployment
 
-Run the image. It will automatically use kubernetes as the orchestration provider.
-```
-[sudo] atomic run projectatomic/apache-centos7-atomicapp
-```
+#### Deploying with Default Parameters
 
-Note: This option is not interactive because all params in the Nulecule file have default values.
+##### Using Atomic CLI
 
-## Option 2: Unattended
-
-1. Create the file `answers.conf` with these contents:
-
-    This sets up the values for the two configurable parameters (image and hostport) and indicates that kubernetes should be the orchestration provider.
-
-        [general]
-        provider = kubernetes
-
-        [apache-centos7-atomicapp-app]
-        image = centos/httpd # optional: choose a different image
-        hostport = 80        # optional: choose a different port to expose
-1. Run the application from the current working directory
-
-        $ [sudo] atomic run projectatomic/apache-centos7-atomicapp
-        ...
-        apache-centos7-atomicapp
-
-
-1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on base docker.
-
-## Option 3: Install and Run
-
-You may want to download the application, review the configuraton and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
-
-1. Download the application files using `atomic run IMAGE --mode fetch`
-
-        [sudo] atomic run projectatomic/apache-centos7-atomicapp --mode fetch
-
-1. Rename `answers.conf.sample`
-
-        mv answers.conf.sample answers.conf
-
-1. Edit `answers.conf`, review files if desired and then run
-
-        $ [sudo] atomic run projectatomic/apache-centos7-atomicapp
-        ...
-        apache-centos7-atomicapp
-
-## Test
-Any of these approaches should create a kubernetes pod or a running docker container. 
-
-With a kubernetes pod, once its state is "Running" curl the minion it's running on.
-
-```
-$ kubectl get pod apache-centos7-atomicapp
-POD                IP                  CONTAINER(S)       IMAGE(S)           HOST                LABELS              STATUS
-apache-centos7-atomicapp        172.17.0.8          apache-centos7-atomicapp        centos/httpd       10.3.9.216/         name=apache-centos7-atomicapp   Running
-$ curl 10.3.9.216
-<bunches_of_html_goodness>
+```sh
+sudo atomic run projectatomic/apache-centos7-atomicapp
 ```
 
-If you test the docker provider, once the container is running, curl the port on your localhost.
+##### Using Atomic App
 
+```sh
+sudo atomicapp run projectatomic/apache-centos7-atomicapp
 ```
-$ curl localhost
-<bunches_of_html_goodness>
+
+#### Deploying with User-Provided Parameters
+
+##### Using Atomic CLI
+
+```sh
+sudo atomic run projectatomic/apache-centos7-atomicapp --mode fetch --destination helloapache
+cd apache-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+sudo atomic run projectatomic/apache-centos7-atomicapp .
+```
+
+##### Using Atomic App
+
+```sh
+atomicapp fetch projectatomic/apache-centos7-atomicapp --destination helloapache
+cd apache-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+atomicapp run .
+```
+
+### Interaction
+
+#### Using the Docker Provider
+
+The default port is :80.
+
+```sh
+curl localhost
+<html-foobar>
+```
+
+#### Using the Kubernetes Provider
+
+By default kubernetes will assign an available external IP.
+
+```sh
+kubectl describe pod apache-centos7-atomicapp
+Name:           apache-centos7-atomicapp
+Namespace:      default
+Node:           127.0.0.1/127.0.0.1
+Start Time:     Wed, 30 Mar 2016 15:05:50 -0400
+Labels:         app=apache-centos7-atomicapp
+Status:         Running
+IP:             172.17.0.5
+
+curl 172.17.0.5
+<html-output>
 ```
