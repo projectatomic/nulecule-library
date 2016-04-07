@@ -1,66 +1,60 @@
-# redis-centos7-atomicapp
+# Redis CentOS 7 Atomic App
 
-This is a redis sample application, in which redis master and slave components are packaged as an atomic application based on the nulecule specification. 
+### Description
 
-Kubernetes and native docker are currently the only supported providers. You'll need to run this from a workstation that has the atomic command.  If you wish to use the kubernetes provider, you will also need a kubectl client that can connect to a kubernetes master.
+This is a redis sample application, in which redis master and slave components are packaged as an Atomic App.
 
-## Option 1: Non-interactive defaults
+### Deployment
 
-Run the image. It will automatically use kubernetes as the orchestration provider.
+#### Deploying with Default Parameters
 
-    $ [sudo] atomic run projectatomic/redis-centos7-atomicapp
+##### Using Atomic CLI
 
-Note: This option is not interactive because all params in the Nulecule file have default values.
-
-## Option 2: Unattended
-
-1. Create the file `answers.conf` with these contents:
-
-    This changes the port for the master from the default of 6379 to 16379. and indicates that kubernetes should be the orchestration provider.
-
-        [general]
-        namespace = default
-        provider = kubernetes
-        
-        [redismaster-app]
-        hostport = 16379
-
-        [redisslave-app]
-        master_hostport = 16379
-        instances = 2
-
-1. Run the application from the current working directory
-
-        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp
-
-1. As an additional experiment, remove the kubernetes pod and change the provider to 'docker' and re-run the application to see it get deployed on base docker.
-
-## Option 3: Fetch and Run
-
-You may want to download the application, review the configuration and parameters as specified in the Nulecule file, and edit the answerfile before running the application.
-
-1. Download the application files
-
-        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp --mode fetch
-
-    By default application is downloaded to `/var/lib/atomicapp/projectatomic-redis-centos7-atomicapp-<randomid>`.
-    You can change where application will be downloaded with `--destination` parameter.
-
-
-2. Go to application directory and create `answers.conf` file from sample
-
-        mv answers.conf.sample answers.conf
-
-3. Edit `answers.conf`, review files if desired and then run
-
-        $ [sudo] atomic run projectatomic/redis-centos7-atomicapp /var/lib/atomicapp/projectatomic-redis-centos7-atomicapp-<randomid>
-
-## Test
-Any of these approaches should create a kubernetes service or a pair of running docker containers. 
-
-With a kubernetes service, once its pods are in the "Running" state, you can use the redis-cli to access the server.  The example below uses the `redis-cli` in the redis container.
-
+```sh
+sudo atomic run projectatomic/redis-centos7-atomicapp
 ```
+
+##### Using Atomic App
+
+```sh
+sudo atomicapp run projectatomic/redis-centos7-atomicapp
+```
+
+#### Deploying with User-Provided Parameters
+
+##### Using Atomic CLI
+
+```sh
+sudo atomic run projectatomic/redis-centos7-atomicapp --mode fetch --destination redis-centos7-atomicapp
+cd redis-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+sudo atomic run projectatomic/redis-centos7-atomicapp .
+```
+
+##### Using Atomic App
+
+```sh
+atomicapp fetch projectatomic/redis-centos7-atomicapp --destination redis-centos7-atomicapp
+cd redis-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+atomicapp run .
+```
+
+### Interaction
+
+The default port is :3306
+
+#### Using the Docker Provider
+
+```sh
+redis-cli
+```
+
+#### Using the Kubernetes Provider
+
+By default kubernetes will assign an available external IP.
+
+```sh
 $ kubectl get service redis-master
 NAME           LABELS                   SELECTOR                 IP              PORT(S)
 redis-master   name=redis,role=master   name=redis,role=master   <IP Address>    <port>/TCP
@@ -77,7 +71,3 @@ OK
 (nil)
 <IP Address>:<port>> exit
 ```
-
-Clean up can be accomplished by deleting the pods, service, and replication controllers as follows:
-
-    $ kubectl delete pod,rc,svc -l name=redis
