@@ -1,60 +1,24 @@
-# skydns-atomicapp
- 
-An Atomicapp (based on http://github.com/projectatomic/nulecule) 
-provides a skyDNS service for Kubernetes (https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns/skydns) 
+# SkyDNS Atomic App
 
+### Description
 
+Deploys [SkyDNS](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) on the respective Kubernetes cluster.
 
-## 1) enable DNS in Kubernetes cluster
+### Deployment
 
-Add following flags to kubelet.
+__Requirements:__
+You must provide a cluster DNS and cluster domain in your Kubernetes deployment:
 ```
 --cluster-dns=<dns_server>
 --cluster-domain=<dns_domain>
 ```
 
-In default kubernetes setup you can do this by editing `KUBELET_ARGS` in 
-`/etc/kubernetes/kubelet`.
-
-If you are using default values provided in `Nulecule` file, you can use this:
+If you are using default values provided in `Nulecule` file, you can use:
 ```
 KUBELET_ARGS="--cluster_dns=10.254.0.10 --cluster_domain=cluster.local"
 ```
 
-Don't forget to restart kubelets `systemctl restart kubelet`
-
-## 2) Run SkyDNS in Kubernetes cluster
-Create empty directory for your application.
-
-### Option a: use default parameters
-Download and run application, using default values.
-```
-atomic run projectatomic/skydns-atomicapp
-```
-
-### Option b: custom parameters
-
-Download the application files:
-```
-atomic run projectatomic/skydns-atomicapp --mode fetch
-```
-
-Create `answers.conf`
-```
-cp answers.conf.sample answers.conf
-```
-
-Review and edit parameters in `answers.conf` if desired
-```
-$EDITOR  answers.conf
-```
-
-Run application
-```
-atomic run projectatomic/skydns-atomicapp
-```
-
-## Note about SELinux
+__Note about SELinux being enabled:__
 If you have SELinux enabled, then etcd container will be failing with
 `etcdserver create snapshot directory error: mkdir /var/etcd/data/member: permission denied`
 and kubectl-proxy will be stuck.
@@ -74,11 +38,43 @@ kube-dns-v9-sl60t   5/5       Running   4          1h
 031c5758-8210-11e5-b8db-525400e09276
 ```
 
+#### Deploying with Default Parameters
 
+##### Using Atomic CLI
 
-## 3) Test if it is working
+```sh
+sudo atomic run projectatomic/skydns-atomicapp
+```
 
-### Create simple pod for test
+##### Using Atomic App
+
+```sh
+sudo atomicapp run projectatomic/skydns-atomicapp
+```
+
+#### Deploying with User-Provided Parameters
+
+##### Using Atomic CLI
+
+```sh
+sudo atomic run projectatomic/skydns-atomicapp --mode fetch --destination skydns-atomicapp
+cd skydns-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+sudo atomic run projectatomic/skydns-atomicapp .
+```
+
+##### Using Atomic App
+
+```sh
+atomicapp fetch projectatomic/skydns-atomicapp --destination skydns-atomicapp
+cd skydns-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+atomicapp run .
+```
+
+### Interaction
+
+To test and see if SkyDNS is working correctly:
 
 Create file `busybox.yaml`:
 ```yaml
@@ -98,17 +94,17 @@ spec:
   restartPolicy: Always
 ```
 
-Create pod using this file:
+Create a pod using this file:
 ```
 kubectl create -f busybox.yaml
 ```
 
-Wait until pod is running:
+Wait until the pod is running:
 ```
 kubectl get pods busybox
 ```
 
-Once is running exec nslookup in that container:
+Once the pod is running exec nslookup in that container:
 ```
 kubectl exec busybox nslookup kubernetes
 ```
@@ -121,6 +117,3 @@ Address 1: 10.254.0.10
 Name:      kubernetes
 Address 1: 10.254.0.1
 ```
-
-
-

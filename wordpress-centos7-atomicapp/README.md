@@ -1,85 +1,77 @@
-# Wordpress AtomicApp
+# Wordpress CentOS 7 Atomic App
 
-This is a Wordpress AtomicApp based on the Nulecule specification.
-It will reuse the MariaDB AtomicApp to provide Kubernetes, OpenShift3 and Docker based Wordpress to you.
+### Description
 
-This example depends on [kube-dns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns)
- being configured on your cluster, when using Kubernetes.
+This is a Wordpress AtomicApp based on the Nulecule specification. It will reuse the MariaDB AtomicApp to provide Kubernetes, OpenShift3 and Docker based Wordpress to you.
 
-Currently supported providers:
-- Kubernetes
-- OpenShift3
-- Native Docker
+### Deployment
 
-You'll need to run this from a workstation that has the atomic command.
-If you wish to use the Kubernetes provider, you will also need a `kubectl`
-client that can connect to a Kubernetes master.
+__Kubernetes requirements:__ [skydns](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) must be installed in order to utilize DNS lookup.
 
-This is multicontainer AtomicApp, it will reuse the MariaDB Atomic App to
-provide database for wordpress image, when using Kubernetes or Docker provider.
+#### Deploying with Default Parameters
 
-## Option 1: Interactive
+##### Using Atomic CLI
 
-Run the image. It will automatically use Kubernetes as the default orchestration provider.
-```
-atomic run projectatomic/wordpress-centos7-atomicapp
+```sh
+sudo atomic run projectatomic/wordpress-centos7-atomicapp
 ```
 
-NOTE: For Wordpress image and for MariaDB image you have to use same db_pass, db_user, db_name.
-Otherwise Wordpress will not be able connect to database.
+##### Using Atomic App
 
-## Option 2: Install and Run
-
-Download the application files:
-```
-atomic run projectatomic/wordpress-centos7-atomicapp
+```sh
+sudo atomicapp run projectatomic/wordpress-centos7-atomicapp
 ```
 
-Create answers.conf
-```
-cp answers.conf.sample answers.conf
+#### Deploying with User-Provided Parameters
+
+##### Using Atomic CLI
+
+```sh
+sudo atomic run projectatomic/wordpress-centos7-atomicapp --mode fetch --destination wordpress-centos7-atomicapp
+cd wordpress-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+sudo atomic run projectatomic/wordpress-centos7-atomicapp .
 ```
 
-Review and edit parameters in answers.conf if desired
-```
-$EDITOR  answers.conf
-```
-NOTE: For Wordpress image and for MariaDB image you have to use same db_pass, db_user, db_name.
-Otherwise Wordpress will not be able connect to database.
+##### Using Atomic App
 
-Run application
-```
-atomic run projectatomic/wordpress-centos7-atomicapp
+```sh
+atomicapp fetch projectatomic/wordpress-centos7-atomicapp --destination wordpress-centos7-atomicapp
+cd wordpress-centos7-atomicapp
+cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
+atomicapp run .
 ```
 
-## Test
+### Interaction
 
-Get clusterIP of wordpress service.
-```
-# kubectl get service wordpress
-NAME        LABELS                    SELECTOR                  IP(S)           PORT(S)
-wordpress   name=wordpress-frontend   name=wordpress-frontend   10.254.112.20   80/TCP
+The default port is :80
 
-```
+#### Using the Docker Provider
 
-Now you should be able to connect to that IP address and see if wordpress is
-running.
-
-```
-# curl -I http://10.254.112.20/
-HTTP/1.1 302 Found
-Date: Wed, 04 Nov 2015 14:41:46 GMT
-Server: Apache/2.4.10 (Debian) PHP/5.6.15
-X-Powered-By: PHP/5.6.15
-Expires: Wed, 11 Jan 1984 05:00:00 GMT
-Cache-Control: no-cache, must-revalidate, max-age=0
-Pragma: no-cache
-Location: http://10.254.112.20/wp-admin/install.php
-Content-Type: text/html; charset=UTF-8
+```sh
+curl localhost:80
+<html-foobar>
 ```
 
-# Changelog
+#### Using the Kubernetes Provider
 
-## 2.0.0
-- Modified to use [DNS in Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns)
-- Added support for Docker provider
+By default kubernetes will assign an available external IP.
+
+```sh
+kubectl get pods
+NAME                   READY     STATUS    RESTARTS   AGE
+mariadb                1/1       Running   0          5h
+wordpress              1/1       Running   0          5h
+
+kubectl describe pod wordpress
+Name:           wordpress
+Namespace:      default
+Node:           127.0.0.1/127.0.0.1
+Start Time:     Thu, 07 Apr 2016 09:29:26 -0400
+Labels:         name=wordpress-frontend
+Status:         Running
+IP:             172.17.0.5
+
+curl 172.17.0.5:80
+<html-output>
+```
