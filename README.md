@@ -1,4 +1,4 @@
-# Nulecule library
+# Nulecule Library
 
 This library contains a set of working examples of composite container applications. The applications are specified using the [Nulecule Specification](https://github.com/projectatomic/nulecule). This specification allows for reusable components and defines a full multi-container application. You may use the applications for reference or, in some cases, deployment.
 
