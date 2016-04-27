@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.5.0
+FROM projectatomic/atomicapp:0.5.1
 
 MAINTAINER Christoph Görn <goern@redhat.com>
 
