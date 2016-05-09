@@ -6,31 +6,31 @@ These examples are all intended to be used with [atomicapp](https://github.com/p
 
 ### Index
 
-- [apache-centos7-atomicapp](apache-centos7-atomicapp/README.md): 
+- [apache-centos7-atomicapp](apache-centos7-atomicapp/):
     - A centos/apache container similar to the "helloapache" example
-- [etherpad-centos7-atomicapp](etherpad-centos7-atomicapp/README.md): 
+- [etherpad-centos7-atomicapp](etherpad-centos7-atomicapp/):
     - This is a multi-container application that uses both Etherpad and MariaDB
-- [flask-redis-centos7-atomicapp](flask-redis-centos7-atomicapp/README.md):
+- [flask-redis-centos7-atomicapp](flask-redis-centos7-atomicapp/):
     - A 2-tier application based on Flask and Redis
-- [gitlab-centos7-atomicapp](gitlab-centos7-atomicapp/README.md):
+- [gitlab-centos7-atomicapp](gitlab-centos7-atomicapp/):
     - A 3-tier application based on Redis, PostgreSQL and Gitlab 
-- [gocounter-scratch-atomicapp](gocounter-scratch-atomicapp/README.md):
+- [gocounter-scratch-atomicapp](gocounter-scratch-atomicapp/):
     - A stand-alone Go application that displays a counter for each web visit
-- [helloapache](helloapache/README.md):
+- [helloapache](helloapache/):
     - A helloworld example using the centos/apache container
-- [mariadb-centos7-atomicapp](mariadb-centos7-atomicapp/README.md):
+- [mariadb-centos7-atomicapp](mariadb-centos7-atomicapp/):
     - A single container application built on the centos/mariadb image
-- [mariadb-fedora-atomicapp](mariadb-fedora-atomicapp/README.md):
+- [mariadb-fedora-atomicapp](mariadb-fedora-atomicapp/):
     - A single container application built on the fedora/mariadb image
-- [mongodb-centos7-atomicapp](mongodb-centos7-atomicapp/README.md):
+- [mongodb-centos7-atomicapp](mongodb-centos7-atomicapp/):
     - A single container application built on the centos/mongodb-26-centos7 image
-- [postgresql-centos7-atomicapp](postgresql-centos7-atomicapp/README.md):
+- [postgresql-centos7-atomicapp](postgresql-centos7-atomicapp/):
     - It's a single container application based on the centos/postgresql image
-- [redis-centos7-atomicapp](redis-centos7-atomicapp/README.md):
+- [redis-centos7-atomicapp](redis-centos7-atomicapp/):
     - A Redis sample application, in which Redis master and slave components are packaged as an Atomic App
-- [skydns-atomicapp](skydns-atomicapp/README.md):
+- [skydns-atomicapp](skydns-atomicapp/):
     - Deploys SkyDNS on the respective Kubernetes cluster
-- [wordpress-centos7-atomicapp](wordpress-centos7-atomicapp/README.md):
+- [wordpress-centos7-atomicapp](wordpress-centos7-atomicapp/):
     - This is a Wordpress AtomicApp based on the Nulecule specification. 
     - It will reuse the MariaDB AtomicApp to provide Kubernetes, OpenShift3 and Docker based Wordpress to you
 
