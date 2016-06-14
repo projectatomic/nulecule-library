@@ -1,7 +1,7 @@
 # Original source by: Jeroen van Meeuwen <vanmeeuwen@kolabsys.com>
 # https://github.com/kanarip/kolab-atomicapp
 
-FROM projectatomic/atomicapp:0.5.2
+FROM projectatomic/atomicapp:0.6.0
 
 MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
