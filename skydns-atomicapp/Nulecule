@@ -3,7 +3,7 @@ specversion: 0.0.2
 id: skydns-atomicapp
 metadata:
   name: SkyDNS
-  appversion: 2015-10-21-001
+  appversion: 0.0.1
   description: >
     This is a nulecule that will get you the container components you need
     to dev on nulecule apps
