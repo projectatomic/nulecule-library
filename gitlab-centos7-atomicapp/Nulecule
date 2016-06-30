@@ -6,10 +6,13 @@ metadata:
   name: Gitlab App
   appversion: 1.2.0
   description: Gitlab.
+  location: docker.io/projectatomic/gitlab-centos7-atomicapp
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
   - name: redis
     params:

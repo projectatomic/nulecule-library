@@ -3,13 +3,16 @@ specversion: 0.0.2
 id: mariadb-atomicapp
 
 metadata:
-  name: MySQL Atomic App
+  name: MariaDB Atomic App
   appversion: 1.0.0
-  description: This is MySQL
+  description: This is a MariaDB database
+  location: docker.io/projectatomic/mariadb-centos7-atomicapp
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
   - name: mariadb-atomicapp
     params:
