@@ -4,7 +4,8 @@
     "metadata": {
         "name": "MongoDB Server",
         "appversion": "1.0.0",
-        "description": "This is MongoDB"
+        "description": "This is MongoDB",
+        "location": "docker.io/projectatomic/mongodb-centos7-atomicapp"
     },
     "params": [
         {

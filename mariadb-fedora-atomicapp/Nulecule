@@ -1,6 +1,7 @@
 ---
 specversion: 0.0.2
 id: mariadb-app
+
 metadata:
   name: MariaDB App
   appversion: 0.0.1
@@ -8,10 +9,13 @@ metadata:
   license:
     name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
     url: https://www.gnu.org/licenses/agpl-3.0.html
+  location: docker.io/projectatomic/mariadb-fedora-atomicapp
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
   - name: mariadb-app
     params:

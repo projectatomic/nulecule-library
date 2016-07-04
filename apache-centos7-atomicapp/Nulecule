@@ -5,11 +5,14 @@ id: apache-centos7-atomicapp
 metadata:
   name: Apache CentOS Atomic App
   appversion: 0.0.1
+  location: docker.io/projectatomic/apache-centos7-atomicapp
   description: Atomic app for deploying a really basic Apache HTTP server on CentOS
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
   - name: apache-centos7-atomicapp 
     params:

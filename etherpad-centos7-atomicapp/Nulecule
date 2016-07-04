@@ -6,6 +6,7 @@ metadata:
   name: etherpad-app
   appversion: 0.0.1
   description: Atomic app for deploying basic etherpad
+  location: docker.io/projectatomic/etherpad-centos7-atomicapp
 
 params:
     - name: provider

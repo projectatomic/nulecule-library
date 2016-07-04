@@ -6,10 +6,13 @@ metadata:
     name: gocounter
     appversion: 0.0.1
     description: Atomicapp of a golang based app that prints number of hits in past one minute
+    location: docker.io/projectatomic/gocounter-scratch-atomicapp
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
     - name: gocounter
       params:

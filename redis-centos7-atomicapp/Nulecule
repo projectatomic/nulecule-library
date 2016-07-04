@@ -6,10 +6,13 @@ metadata:
   name: Redis App
   appversion: 0.0.1
   description: Redis Atomic App
+  location: docker.io/projectatomic/redis-centos7-atomicapp
+
 params:
     - name: provider
       description: The specified default provider.
       default: kubernetes
+
 graph:
   - name: redismaster-app
     params:
