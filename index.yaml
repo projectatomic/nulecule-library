@@ -1,0 +1,171 @@
+location: .
+nulecules:
+- id: postgresql-atomicapp
+  metadata:
+    appversion: 1.0.0
+    description: This is PostgreSQL
+    location: docker.io/projectatomic/postgresql-centos7-atomicapp
+    name: PostgreSQL Atomic App
+  path: postgresql-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: flask_redis_nulecule
+  metadata:
+    appversion: 0.0.1
+    description: Atomic app of a simple light weight Flask and Redis app. This app
+      counts the number of page visits and stores the counter in Redis store
+    location: docker.io/projectatomic/flask-redis-centos7-atomicapp
+    name: Flask Redis Nulecule App
+  path: flask-redis-centos7-atomicapp
+  providers:
+  - docker
+  - kubernetes
+  specversion: 0.0.2
+- id: redis-atomicapp
+  metadata:
+    appversion: 0.0.1
+    description: Redis Atomic App
+    location: docker.io/projectatomic/redis-centos7-atomicapp
+    name: Redis App
+  path: redis-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: gocounter
+  metadata:
+    appversion: 0.0.1
+    description: Atomicapp of a golang based app that prints number of hits in past
+      one minute
+    location: docker.io/projectatomic/gocounter-scratch-atomicapp
+    name: gocounter
+  path: gocounter-scratch-atomicapp
+  providers:
+  - docker
+  - kubernetes
+  specversion: 0.0.2
+- id: mariadb-atomicapp
+  metadata:
+    appversion: 1.0.0
+    description: This is a MariaDB database
+    location: docker.io/projectatomic/mariadb-centos7-atomicapp
+    name: MariaDB Atomic App
+  path: mariadb-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: helloapache-app
+  metadata:
+    appversion: 0.0.1
+    description: Atomic app for deploying a really basic Apache HTTP server
+    location: docker.io/projectatomic/helloapache
+    name: Hello Apache App
+  path: helloapache
+  providers:
+  - docker
+  - kubernetes
+  - marathon
+  specversion: 0.0.2
+- id: mongodb-atomicapp
+  metadata:
+    appversion: 1.0.0
+    description: This is MongoDB
+    location: docker.io/projectatomic/mongodb-centos7-atomicapp
+    name: MongoDB Server
+  path: mongodb-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: etherpad-app
+  metadata:
+    appversion: 0.0.1
+    description: Atomic app for deploying basic etherpad
+    location: docker.io/projectatomic/etherpad-centos7-atomicapp
+    name: etherpad-app
+  path: etherpad-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: apache-centos7-atomicapp
+  metadata:
+    appversion: 0.0.1
+    description: Atomic app for deploying a really basic Apache HTTP server on CentOS
+    location: docker.io/projectatomic/apache-centos7-atomicapp
+    name: Apache CentOS Atomic App
+  path: apache-centos7-atomicapp
+  providers:
+  - docker
+  - kubernetes
+  - marathon
+  specversion: 0.0.2
+- id: wordpress-atomicapp
+  metadata:
+    appversion: 2.0.0
+    description: Simple Wordpress atomic app. Uses remote mysql atomic app.
+    location: docker.io/projectatomic/wordpress-centos7-atomicapp
+    name: Wordpress App
+  path: wordpress-centos7-atomicapp
+  providers:
+  - docker
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: skydns-atomicapp
+  metadata:
+    appversion: 0.0.1
+    description: 'This is a nulecule that will get you the container components you
+      need to dev on nulecule apps
+
+      '
+    location: docker.io/projectatomic/skydns-atomicapp
+    name: SkyDNS
+  path: skydns-atomicapp
+  providers:
+  - kubernetes
+  specversion: 0.0.2
+- id: guestbookgo-atomicapp
+  metadata:
+    appversion: 0.0.1
+    description: Atomic app for deploying the k8s guestbook-go app
+    location: docker.io/projectatomic/guestbookgo-atomicapp
+    name: Guestbook-Go Atomic App
+  path: guestbookgo-atomicapp
+  providers:
+  - openshift
+  - kubernetes
+  specversion: 0.0.2
+- id: mariadb-app
+  metadata:
+    appversion: 0.0.1
+    description: This is a MariaDB Atomic App
+    license:
+      name: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
+      url: https://www.gnu.org/licenses/agpl-3.0.html
+    location: docker.io/projectatomic/mariadb-fedora-atomicapp
+    name: MariaDB App
+  path: mariadb-fedora-atomicapp
+  providers:
+  - docker
+  - kubernetes
+  specversion: 0.0.2
+- id: gitlab-atomicapp
+  metadata:
+    appversion: 1.2.0
+    description: Gitlab.
+    location: docker.io/projectatomic/gitlab-centos7-atomicapp
+    name: Gitlab App
+  path: gitlab-centos7-atomicapp
+  providers:
+  - docker
+  - kubernetes
+  specversion: 0.0.2
