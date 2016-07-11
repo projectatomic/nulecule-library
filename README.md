@@ -61,6 +61,15 @@ __The README.md file should contain the following three sections:__
   2. Deployment: How to deploy the application using the `atomic` or `atomicapp` CLIs
   3. Interaction: How to access/use the application after deployment
 
+### Generating the `index.yaml` for `atomicapp index list` commands
+
+In order to generate a Docker-compatible image for an Atomic App library index. Use the following steps:
+
+```
+atomicapp index generate .
+docker build -t $USER/index .
+```
+
 ### Contributing
 
 Feel free to open a PR if you wish to contribute to the nulecule-library! We accept all kind of applications.
