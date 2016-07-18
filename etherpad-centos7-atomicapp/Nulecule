@@ -44,3 +44,5 @@ graph:
       openshift:
         - file://artifacts/openshift/etherpad-rc.yaml
         - file://artifacts/openshift/etherpad-svc.yaml
+      marathon:
+        - file://artifacts/marathon/etherpad.json
