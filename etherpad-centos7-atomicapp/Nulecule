@@ -30,7 +30,7 @@ graph:
       - name: db_name
         description: Database Name
       - name: db_host
-        description: Database service name
+        description: Database service hostname/ip
         default: mariadb
     artifacts:
       docker:
