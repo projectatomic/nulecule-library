@@ -37,3 +37,5 @@ graph:
           - kubernetes
       docker:
         - file://artifacts/docker/mariadb-app-pod_run
+      marathon:
+        - file://artifacts/marathon/mariadb.json
