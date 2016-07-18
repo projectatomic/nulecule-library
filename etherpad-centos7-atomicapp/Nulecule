@@ -32,6 +32,9 @@ graph:
       - name: db_host
         description: Database service hostname/ip
         default: mariadb
+      - name: db_port
+        description: Database service port
+        default: 3306
     artifacts:
       docker:
         - file://artifacts/docker/etherpad-centos7-atomicapp-run

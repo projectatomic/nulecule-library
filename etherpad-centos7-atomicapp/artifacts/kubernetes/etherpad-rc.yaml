@@ -28,6 +28,6 @@ spec:
             - name: DB_PASS
               value: $db_pass
             - name: DB_PORT
-              value: '3306'
+              value: $db_port
             - name: DB_USER
               value: $db_user
