@@ -16,6 +16,9 @@ params:
 graph:
   - name: mariadb-atomicapp
     params:
+      - name: image
+        description: the container image to use
+        default: centos/mariadb
       - name: db_user
         description: Database User
       - name: db_pass

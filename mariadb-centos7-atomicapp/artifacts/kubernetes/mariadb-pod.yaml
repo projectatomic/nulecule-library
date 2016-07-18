@@ -5,7 +5,7 @@ spec:
         limits:
           cpu: 100m
       name: mariadb
-      image: centos/mariadb
+      image: $image
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: $root_pass
