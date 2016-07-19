@@ -30,9 +30,9 @@ graph:
       - name: db_host
         description: database host
         default: mariadb:3306
-      - name: port
-        description: port for docker port mapping (used only with docker provider)
-        default: 8080
+      - name: hostport
+        description: port for port mapping (used with docker/marathon providers)
+        default: 8888
     artifacts:
       kubernetes:
         - file://artifacts/kubernetes/wordpress-pod.yaml
@@ -43,3 +43,5 @@ graph:
         - file://artifacts/openshift/pod.yaml
       docker:
         - file://artifacts/docker/wordpress-run
+      marathon:
+        - file://artifacts/marathon/wordpress.json

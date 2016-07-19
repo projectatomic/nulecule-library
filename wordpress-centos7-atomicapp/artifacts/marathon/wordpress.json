@@ -1,0 +1,25 @@
+{
+  "id": "wordpress",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "$image",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": $hostport,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+    "WORDPRESS_DB_HOST": "$db_host",
+    "WORDPRESS_DB_NAME": "$db_name",
+    "WORDPRESS_DB_USER": "$db_user",
+    "WORDPRESS_DB_PASSWORD": "$db_pass"
+  },
+  "cpus": 0.5,
+  "mem": 256
+}
