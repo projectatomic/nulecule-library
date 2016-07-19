@@ -1,0 +1,26 @@
+{
+  "id": "etherpad",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "$image",
+      "portMappings": [
+        {
+          "containerPort": 9001,
+          "hostPort": $hostport,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+    "DB_HOST": "$db_host",
+    "DB_PORT": "$db_port",
+    "DB_DBID": "$db_name",
+    "DB_USER": "$db_user",
+    "DB_PASS": "$db_pass"
+  },
+  "cpus": 0.5,
+  "mem": 256
+}
