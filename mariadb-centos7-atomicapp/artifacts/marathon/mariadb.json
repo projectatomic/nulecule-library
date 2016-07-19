@@ -1,0 +1,25 @@
+{
+  "id": "mariadb",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "network": "BRIDGE",
+      "image": "$image",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "hostPort": 3306,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "env": {
+    "MYSQL_ROOT_PASSWORD": "$root_pass",
+    "MYSQL_DATABASE": "$db_name",
+    "MYSQL_USER": "$db_user",
+    "MYSQL_PASSWORD": "$db_pass"
+  },
+  "cpus": 0.5,
+  "mem": 128
+}
