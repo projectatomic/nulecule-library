@@ -1,2 +1,2 @@
-FROM projectatomic/atomicapp:0.6.2
+FROM scratch
 ADD index.yaml /index.yaml
