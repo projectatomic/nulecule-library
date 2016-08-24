@@ -13,13 +13,13 @@ __Kubernetes requirements:__ [skydns](https://github.com/kubernetes/kubernetes/t
 ##### Using Atomic CLI
 
 ```sh
-sudo atomic run projectatomic/guestbook-go-atomicapp
+sudo atomic run projectatomic/guestbookgo-atomicapp
 ```
 
 ##### Using Atomic App
 
 ```sh
-sudo atomicapp run projectatomic/guestbook-go-atomicapp
+sudo atomicapp run projectatomic/guestbookgo-atomicapp
 ```
 
 #### Deploying with User-Provided Parameters
@@ -27,17 +27,17 @@ sudo atomicapp run projectatomic/guestbook-go-atomicapp
 ##### Using Atomic CLI
 
 ```sh
-sudo atomic run projectatomic/guestbook-go-atomicapp --mode fetch --destination guestbook-go-atomicapp
-cd guestbook-go-atomicapp
+sudo atomic run projectatomic/guestbookgo-atomicapp --mode fetch --destination guestbookgo-atomicapp
+cd guestbookgo-atomicapp
 cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
-sudo atomic run projectatomic/guestbook-go-atomicapp .
+sudo atomic run projectatomic/guestbookgo-atomicapp .
 ```
 
 ##### Using Atomic App
 
 ```sh
-atomicapp fetch projectatomic/guestbook-go-atomicapp --destination guestbook-go-atomicapp
-cd guestbook-go-atomicapp
+atomicapp fetch projectatomic/guestbookgo-atomicapp --destination guestbookgo-atomicapp
+cd guestbookgo-atomicapp
 cp answers.conf.sample answers.conf # Modify then copy answers.conf.sample
 atomicapp run .
 ```
