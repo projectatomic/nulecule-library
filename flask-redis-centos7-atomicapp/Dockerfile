@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.6.3
+FROM projectatomic/atomicapp:0.6.4
 
 MAINTAINER Dharmit Shah <dshah@redhat.com>
 
